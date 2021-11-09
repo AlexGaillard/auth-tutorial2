@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AuthContext from './AuthContext';
 
-const loginAuthProvider = {
+const loginAuth = {
   isAuthenticated: false,
   signin(username, password, callback) {
     var myHeaders = new Headers();
@@ -24,7 +24,7 @@ const loginAuthProvider = {
       .then(result => {
         let loginInfo = JSON.parse(result)
         if (loginInfo.token && loginInfo.isAccountActive) {
-          loginAuthProvider.isAuthenticated = true;
+          loginAuth.isAuthenticated = true;
           console.log(JSON.parse(result))
           callback(loginInfo.firstName)
         }
@@ -32,7 +32,7 @@ const loginAuthProvider = {
       .catch(error => console.log('Login failed:', error));
   },
   signout(callback) {
-    loginAuthProvider.isAuthenticated = false;
+    loginAuth.isAuthenticated = false;
     setTimeout(callback, 100);
   }
 }
@@ -41,14 +41,14 @@ function AuthProvider({ children }) {
   let [user, setUser] = useState(null);
 
   let signin = (username, password, callback) => {
-    return loginAuthProvider.signin(username, password, (userName) => {
+    return loginAuth.signin(username, password, (userName) => {
       setUser(userName);
       callback();
     })
   }
 
   let signout = (callback) => {
-    return loginAuthProvider.signout(() => {
+    return loginAuth.signout(() => {
       setUser(null);
       callback();
     })
