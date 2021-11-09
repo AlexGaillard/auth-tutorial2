@@ -5,8 +5,8 @@ import AuthContext from './AuthContext';
 function AuthProvider({ children }) {
   let [user, setUser] = useState(null);
 
-  let signin = (newUser, callback) => {
-    return loginAuthProvider.signin((userName) => {
+  let signin = (username, password, callback) => {
+    return loginAuthProvider.signin(username, password, (userName) => {
       setUser(userName);
       callback();
     })

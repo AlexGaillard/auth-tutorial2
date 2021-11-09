@@ -2,13 +2,13 @@
 
 const loginAuthProvider = {
   isAuthenticated: false,
-  signin(callback) {
+  signin(username, password, callback) {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
     var raw = JSON.stringify({
-      "username": "alex@radish.health",
-      "password": "PUiE!8YfFX3yGrB"
+      "username": username,
+      "password": password
     });
 
     var requestOptions = {
