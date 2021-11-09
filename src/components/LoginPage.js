@@ -35,7 +35,7 @@ function LoginPage() {
           Username: <input name="username" type="text" />
         </label>{" "}
         <label>
-          Password: <input name="password" type="text" />
+          Password: <input name="password" type="password" />
         </label>{" "}
         <button type="submit">Login</button>
       </form>
