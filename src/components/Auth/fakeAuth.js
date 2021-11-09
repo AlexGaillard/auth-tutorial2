@@ -25,7 +25,7 @@ const loginAuthProvider = {
         if (loginInfo.token && loginInfo.isAccountActive) {
           loginAuthProvider.isAuthenticated = true;
           console.log(JSON.parse(result))
-          callback()
+          callback(loginInfo.firstName)
         }
       })
       .catch(error => console.log('error', error));

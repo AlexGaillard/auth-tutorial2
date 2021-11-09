@@ -6,8 +6,8 @@ function AuthProvider({ children }) {
   let [user, setUser] = useState(null);
 
   let signin = (newUser, callback) => {
-    return loginAuthProvider.signin(() => {
-      setUser(newUser);
+    return loginAuthProvider.signin((userName) => {
+      setUser(userName);
       callback();
     })
   }
